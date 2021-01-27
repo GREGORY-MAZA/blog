@@ -1,10 +1,12 @@
 <?php
-function lastBlogPosts(PDO $connect){
-    return [];
-}
-//REQUETE SQL !
+// création de la fonction avec des parametres requete SQL
+function lastBlogPosts(PDO $connexion){
+    $resultat = $connexion->query('SELECT title, pseudo
+    FROM posts
+    INNER JOIN authors ON posts.authors_id=authors.id
+    LIMIT 10');
 
-// SELECT `title`, `text`, `pseudo`, DATE_FORMAT(`date_begin`,"%d/%m/%Y"), DATE_FORMAT(`date_end`,"%d/%m/%Y")
-//FROM `posts`
-//INNER JOIN `authors` ON `posts`.`authors_id` = `authors`.`id`
-//LIMIT 2
+    $posts = $resultat ->fetchAll();
+    return $posts;
+
+}
