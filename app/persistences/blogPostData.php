@@ -11,13 +11,16 @@ function lastBlogPosts(PDO $connexion){
 
 }
 
-function blogPostById(PDO $postByID){
-    $resultat2 = $postByID->query('SELECT posts.id, pseudo 
+function blogPostById(PDO $postByID, $id){
+    $resultat2 = $postByID->query("SELECT posts.id, posts.title, authors.pseudo 
 FROM posts 
 INNER JOIN authors ON posts.authors_id=authors.id
-WHERE authors.id=2
-LIMIT 1');
+WHERE authors.id=$id
+LIMIT 1");
 
-    $posts= $resultat2->fetchAll();
+    $posts= $resultat2->fetch(PDO::FETCH_ASSOC);
     return $posts;
 }
+
+
+
