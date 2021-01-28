@@ -1,11 +1,10 @@
-<?php
-require 'ressources/views/header.tpl.php';
-require 'ressources/views/footer.tpl.php';
-if (!empty($tenLastPosts)) {
-    var_dump($tenLastPosts);
-    foreach ($tenLastPosts as $case) {
-    }
-}
-else {
-    echo 'NADA ! ! ! !';
-}
+<?php if (!empty($tenLastPosts)): ?>
+    <?php foreach ($tenLastPosts as $read):?>
+        <div>
+            <h3> <?=$read['title']?> </h3> <br>
+            <?=$read['text']?> <br>
+            <?=$read['pseudo']?>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
+
