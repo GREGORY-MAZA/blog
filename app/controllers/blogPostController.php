@@ -12,7 +12,10 @@ if (filter_has_var(INPUT_GET,'id')) {
 //Require  : inclut et exécute le fichier spécifié en argument.(stop le script si une erreur survient , include lui n'émetra qu'une alerte)
     require  'app/persistences/blogPostData.php';
     $onePost = blogPostById($pdo, $id);
+    $comments = commentsByBlogPost($pdo, $id);
     require 'ressources/views/blogPost.tpl.php';
+
+
     ?>
 
 

@@ -23,15 +23,19 @@ WHERE posts.id=$id");
 }
 
 
-/*function commentsByBlogPost(PDO $commentPost, $id){
-    $resultat = $commentPost->query("SELECT posts.title, comments.text
-    FROM posts
-    INNER JOIN comments ON comments.authors_pseudo=authors.pseudo
-    WHERE authors.id=$id";
+function commentsByBlogPost(PDO $commentPost, $id){
+    $resultat = $commentPost->query("SELECT comments.text, authors.pseudo
+FROM comments
+INNER JOIN authors ON comments.authors_id=authors.id
+WHERE comments.posts_id=$id");
 
-        $posts= $resultat->fetchAll(PDO::FETCH_COLUMN);
+        $posts= $resultat->fetchAll(PDO::FETCH_ASSOC);
         return $posts;
-*/
+}
 
+/*SELECT comments.text, authors.pseudo
+FROM comments
+INNER JOIN authors ON comments.authors_id=authors.id
+WHERE comments.authors_id=1*/
 
 
