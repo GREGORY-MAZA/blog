@@ -1,9 +1,9 @@
-<?php if (!empty($onePost)): ?>
-    <?php foreach ($onePost as $read):?>
-        <div>
-            <h3> <?=$read['id']?> </h3> <br>
-            <?=$read['pseudo']?>
-        </div>
-    <?php endforeach; ?>
-<?php endif; ?>
+<?php
 
+//blogPosttpl
+debug($onePost); ?>
+
+
+
+<h3> <?php echo $onePost['title']?> </h3> <?php echo $onePost['text'] ?> <br> <br> <?php echo $onePost['pseudo'];
+?>
